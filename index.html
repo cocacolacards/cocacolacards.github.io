@@ -1,0 +1,579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css"/>
+<title>Coke Cards</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="cardList.js" ></script>
+</head>
+
+
+<style type="text/css">
+
+.hovSim-content {
+  margin-left:auto;
+  margin-top:auto;
+  display: block;
+  vertical-align: middle;
+  max-width: 15.0em;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.hovCaptionC {
+  margin: auto;
+  border-top: 2px solid #ed1c16;
+  display: block;
+  text-align: center;
+  color: #ed1c16;
+  background-color: #ffe6e6;
+  font-weight: bold;
+  border-radius: 0px 0px 8px 8px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 80%; /* Full width */
+  height: 80%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ui-dialog-titlebar {
+    display: none;
+}
+
+.ui-widget-content {
+    border: 1px solid #aaa;
+    background: #ed1c16;
+    color: #222;
+}
+
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+
+.imgL {
+    float:left;
+    width:0.5em;
+    margin:3px;
+    margin-top:3.5em;
+    border: 1px solid #ffcccc;
+    height:1.25em;
+    background-color: #ff8080;
+    border-radius: 8px;
+}
+.imgR {
+    float:left;
+    width:0.5em;
+    margin:3px;
+    margin-top:3.5em;
+    border: 1px solid #ffcccc;
+    height:1.25em;
+    background-color: #ff8080;
+    border-radius: 8px;
+}
+.oneDeckC{
+    float:left;
+    width:8.25em;
+    height:11.2em;
+    margin:3px;
+    border: 1px solid #ff8080;
+    background-color: #fffaff;
+    border-radius: 8px;
+}
+    
+.imgTopC {
+    width:1.25em; 
+    height:0.50em; 
+    border: 1px solid #ffcccc; 
+    margin-top:3px; 
+    background-color: #ff8080; 
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.imgLFRC {
+    float:left;
+    width:100%;
+    height:8.40em;
+}
+
+.imgFrontC {
+    float:left;
+    width:6em;
+    height:8.05em;
+    border: 1px solid #ffff;
+    margin-top:3px;
+    margin-bottom:3px;
+}
+
+.imgFrontImgC {
+    width:100%;
+}
+
+.imgBottomRowC{
+    float:left;
+    width:7.85em;
+    height:0.5em;
+    margin-top:3px;
+    margin-left:3px;
+}
+
+.imgBackC {
+    float:left;
+    width:1.25em;
+    height:100%;
+    border: 1px solid #ffcccc;
+    background-color: #ff8080;
+    border-radius: 8px;
+}
+
+.imgBottomC {
+    float:left;
+    width:1.25em;
+    height:100%;
+    border: 1px solid #ffcccc;
+    background-color: #ff8080;
+    margin-left:3px;
+    border-radius: 8px;
+}
+
+.imgOther1C {
+    float:right;
+    width:1.25em;
+    height:100%;
+    border: 1px solid #ffcccc;
+    background-color: #ff8080;
+    margin-left:3px;
+    border-radius: 8px;
+}
+
+.imgOther2C {
+    float:right;
+    width:1.25em;
+    height:100%;
+    border: 1px solid #ffcccc;
+    background-color: #ff8080;
+    margin-left:3px;
+    border-radius: 8px;
+}
+
+.imgOther3C {
+    float:right;
+    width:1.25em;
+    height:100%;
+    border: 1px solid #ffcccc;
+    background-color: #ff8080;
+    margin-left:3px;
+    border-radius: 8px;
+}
+
+.imgDescC {
+    float:left; 
+    width:7.71em; 
+    height:0.75em;
+    margin-top:3px;
+    margin-left:3px;
+    display: block;
+    color: #ed1c16;
+    text-align: center;
+}
+</style>
+
+<body>
+<div style="float:left; width:100%; height:100%;">
+   <div id="sml" style="float:left; width:100%; height:100%;">
+     <div id="oneDeck" class="oneDeckC">
+	<div id="imgTop" class="imgTopC" onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">
+        </div>
+        <div id="imgLFR" class="imgLFRC">
+  	  <div id="imgLeft" class="imgL"  onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">&nbsp;
+          </div>
+          <div id="imgFront" class="imgFrontC" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">
+              <img id="imgFrontImg" src="coke_00000_1.JPG" alt="Front" class="imgFrontImgC" onclick="doOnclick(this);"/>
+          </div>
+	  <div id="imgRight" class="imgR" onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">&nbsp;
+          </div>
+        </div>
+	<div id="imgBottomRow" class="imgBottomRowC">
+	  <div id="imgBack" class="imgBackC"  onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">&nbsp;
+          </div>
+	  <div id="imgBottom" class="imgBottomC"  onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">&nbsp;
+          </div>
+	  <div id="imgOther3" class="imgOther3C"  onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">&nbsp;
+          </div>
+	  <div id="imgOther2" class="imgOther2C"  onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">&nbsp;
+          </div>
+	  <div id="imgOther1" class="imgOther1C"  onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">&nbsp;
+          </div>
+        </div>
+	<div id="imgDesc" class="imgDescC">
+        </div>
+     </div>
+   </div>
+	   
+   <div id="lrg" tabindex="-1" class="modal" >
+      <span class="close">&times;</span>
+      <img id="LImg" tabindex="-1" class="modal-content" src="coke_00000_1.JPG"  />
+      <div id="caption"></div>
+   </div>
+   <div id="dialog" title="Basic dialog" style="border 5px blue;">
+     <div>
+       <img id="hovImg" tabindex="-1" class="hovSim-content" src="coke_00000_1.JPG"  />
+        <div id="hovCaption" class="hovCaptionC"></div>
+     </div>
+   </div>
+</div>
+
+
+<script language="javascript" type="text/javascript">
+//<![CDATA[
+var datePos = 0;
+var descPos = 1;
+var frontPos = 2;
+var backPos = 3;
+var leftPos = 4;
+var rightPos = 5;
+var topPos = 6;
+var bottomPos = 7;
+var other1pos = 8;
+var other2pos = 9;
+var other3pos = 10;
+var rowCnt = 0;
+var imgDir = '';
+var modal = document.getElementById("lrg");
+var simHov = document.getElementById("simHov");
+var modalImg = document.getElementById("LImg");
+var simHovImg = document.getElementById("hovImg");
+var captionText = document.getElementById("caption");
+var hovCaptionText = document.getElementById("hovCaption");
+var span = document.getElementsByClassName("close")[0];
+var buttonOff = '#ffe6e6';
+var buttonOn = '#ff8080';
+
+document.getElementById('lrg').style.display="none";
+span.onclick = function() {
+  modal.style.display = "none";
+  simHov.style.display = "none";
+}
+
+function doOnclick(e){
+  var n = e.id.indexOf('_');
+  var id=e.id.substring(0,n);
+  var pos = e.id.substring(n+1);
+  if(id == "imgFrontImg"){
+     src = imgDir + cards[pos][frontPos];
+  }
+  else if(id == "imgBack"){
+     src = imgDir + cards[pos][backPos];
+  }
+  else if(id == "imgLeft"){
+     src = imgDir + cards[pos][leftPos];
+  }
+  else if(id == "imgRight"){
+     src = imgDir + cards[pos][rightPos];
+  }
+  else if(id == "imgTop"){
+     src = imgDir + cards[pos][topPos];
+  }
+  else if(id == "imgBottom"){
+     src = imgDir + cards[pos][bottomPos];
+  }
+  else if(id == "imgOther1"){
+     src = imgDir + cards[pos][other1pos];
+  }
+  else if(id == "imgOther2"){
+     src = imgDir + cards[pos][other2pos];
+  }
+  else if(id == "imgOther3"){
+     src = imgDir + cards[pos][other3pos];
+  }
+  modal.style.display = "block";
+  modalImg.src = src;
+ 
+  if(id == "imgFrontImg"){
+    captionText.innerHTML = "Front";
+  }
+  else {
+    captionText.innerHTML =id.substring(3);
+  }
+
+}
+
+function thumbHover(e){
+  var src=null; 
+  var n = e.id.indexOf('_');
+  var id=e.id.substring(0,n);
+  var pos = e.id.substring(n+1);
+  var currCard= document.getElementById("oneDeck_"+pos.toString());
+
+  var pop =  document.getElementById('simHov');
+  if(id == "imgFront"){
+     src =imgDir + cards[pos][frontPos];;
+  }
+  else if(id == "imgBack"){
+     src = imgDir + cards[pos][backPos];
+  }
+  else if(id == "imgLeft"){
+     src = imgDir + cards[pos][leftPos];
+  }
+  else if(id == "imgRight"){
+     src = imgDir + cards[pos][rightPos];
+  }
+  else if(id == "imgTop"){
+     src = imgDir + cards[pos][topPos];
+  }
+  else if(id == "imgBottom"){
+     src = imgDir + cards[pos][bottomPos];
+  }
+  else if(id == "imgOther1"){
+     src = imgDir + cards[pos][other1pos];
+  }
+  else if(id == "imgOther2"){
+     src = imgDir + cards[pos][other2pos];
+  }
+  else if(id == "imgOther3"){
+     src = imgDir + cards[pos][other3pos];
+  };
+ 
+  e.style.background=buttonOff;
+  e.style.borderColor="#ff8080";
+  document.getElementById("hovImg").src=src;
+  document.getElementById("dialog").title=id;
+  if(id == "imgFront"){
+    hovCaptionText.innerHTML=cards[pos][descPos];
+  }
+  else{ 
+    hovCaptionText.innerHTML =id.substring(3);
+  }
+  $( function() {
+    $( "#dialog" ).dialog({ 
+	    position: { my: "left top", at: "left bottom+25", of: e }
+    });
+
+  } );
+}
+
+function thumbUnHover(e){
+$( function() {
+    $( "#dialog" ).dialog('close');
+} );
+  var n = e.id.indexOf('_');
+  var id=e.id.substring(0,n);
+  var pos = e.id.substring(n+1);
+  if(id == "imgFront"){
+    e.style.background="#fffff";
+  }
+  else{
+    e.style.background=buttonOn;
+  }
+    e.style.borderColor="";
+}
+
+doit();
+
+function doit(){
+  var i = 0;
+  for(var a=1;a<cards.length;a++){
+    var elmnt = document.getElementById('oneDeck');
+    ++i;
+    var cln = elmnt.cloneNode(true);
+    cln.setAttribute('id',"oneDeck" + "_" + i.toString());
+    for(var k=0;k<cln.children.length;k++){
+      if(cln.children[k].id == "imgDesc"){
+         cln.children[k].innerHTML= cards[a][datePos];
+	 var t = cards[a][frontPos];
+         cln.children[k].title= t.substring(0,t.indexOf('_',5));
+      }
+      cln.children[k].setAttribute('id',cln.children[k].id + '_' +i.toString());
+      var kk = cln.children[k];
+	if((typeof cards[a][topPos] === "undefined") && (kk.id.substring(0,6) == "imgTop")){
+	  kk.setAttribute('onclick', null);
+	  kk.setAttribute('onmouseover', null);
+	  kk.setAttribute('onmouseout', null);
+	  kk.setAttribute('style', 'background:'+buttonOff+';');
+	}
+        for(var m=0;m<kk.children.length;m++){
+	  kk.children[m].setAttribute('id', kk.children[m].id + '_' + i.toString());
+	  var nn = kk.children[m];
+            for(var p=0;p<nn.children.length;p++){
+	      if(nn.children[p].id == "imgFrontImg"){
+	        nn.children[p].setAttribute('src',imgDir + cards[i][frontPos]);
+	      }
+	      nn.children[p].setAttribute('id', nn.children[p].id + '_' + i.toString());
+  	    }
+	  if((typeof cards[a][leftPos] === "undefined") && (kk.children[m].id.substring(0,7) == "imgLeft")){
+	    kk.children[m].setAttribute('onclick', null);
+	    kk.children[m].setAttribute('onmouseover', null);
+	    kk.children[m].setAttribute('onmouseout', null);
+	    kk.children[m].setAttribute('style', 'background:'+buttonOff+';');
+	  }
+	  if((typeof cards[a][rightPos] === "undefined") && (kk.children[m].id.substring(0,8) == "imgRight")){
+	    kk.children[m].setAttribute('onclick', null);
+	    kk.children[m].setAttribute('onmouseover', null);
+	    kk.children[m].setAttribute('onmouseout', null);
+	    kk.children[m].setAttribute('style', 'background:'+buttonOff+';');
+	  }
+	  if((typeof cards[a][bottomPos] === "undefined") && (kk.children[m].id.substring(0,9) == "imgBottom")){
+	    kk.children[m].setAttribute('onclick', null);
+	    kk.children[m].setAttribute('onmouseover', null);
+	    kk.children[m].setAttribute('onmouseout', null);
+	    kk.children[m].setAttribute('style', 'background:'+buttonOff+';');
+  	  }
+	  if((typeof cards[a][other1pos] === "undefined") && (kk.children[m].id.substring(0,9) == "imgOther1")){
+	    kk.children[m].setAttribute('onclick', null);
+	    kk.children[m].setAttribute('onmouseover', null);
+	    kk.children[m].setAttribute('onmouseout', null);
+	    kk.children[m].setAttribute('style', 'background:'+buttonOff+';');
+	  }
+	  if((typeof cards[a][other2pos] === "undefined") && (kk.children[m].id.substring(0,9) == "imgOther2")){
+	    kk.children[m].setAttribute('onclick', null);
+	    kk.children[m].setAttribute('onmouseover', null);
+	    kk.children[m].setAttribute('onmouseout', null);
+	    kk.children[m].setAttribute('style', 'background:'+buttonOff+';');
+	  }
+  	  if((typeof cards[a][other3pos] === "undefined") && (kk.children[m].id.substring(0,9) == "imgOther3")){
+	    kk.children[m].setAttribute('onclick', null);
+	    kk.children[m].setAttribute('onmouseover', null);
+	    kk.children[m].setAttribute('onmouseout', null);
+	    kk.children[m].setAttribute('style', 'background:'+buttonOff+';');
+  	  }
+        }
+    }
+    document.getElementById('sml').appendChild(cln);
+  }
+  elmnt.setAttribute('id',"oneDeck" + "_0");
+  for(s=0;s<elmnt.children.length;s++){
+    if(elmnt.children[s].id == "imgDesc"){
+      elmnt.children[s].innerHTML= cards[0][datePos];
+      var t = cards[0][frontPos];
+      elmnt.children[s].title= t.substring(0,t.indexOf('_',5));
+    }
+    elmnt.children[s].setAttribute('id',elmnt.children[s].id + '_0');
+    var ss = elmnt.children[s];
+	if((typeof cards[0][topPos] === "undefined") && (ss.id.substring(0,6) == "imgTop")){
+	  ss.setAttribute('onclick', null);
+	  ss.setAttribute('onmouseover', null);
+	  ss.setAttribute('onmouseout', null);
+	  ss.setAttribute('style', 'background:'+buttonOff+';');
+	}
+    for(var t=0;t<ss.children.length;t++){
+	ss.children[t].setAttribute('id', ss.children[t].id + '_0');
+	var vv = ss.children[t];
+        for(var u=0;u<vv.children.length;u++){
+	  vv.children[u].setAttribute('id', vv.children[u].id + '_0');
+	}
+	if((typeof cards[0][leftPos] === "undefined") && (ss.children[t].id.substring(0,7) == "imgLeft")){
+	  ss.children[t].setAttribute('onclick', null);
+	  ss.children[t].setAttribute('onmouseover', null);
+	  ss.children[t].setAttribute('onmouseout', null);
+	  ss.children[t].setAttribute('style', 'background:'+buttonOff+';');
+	}
+	if((typeof cards[0][rightPos] === "undefined") && (ss.children[t].id.substring(0,8) == "imgRight")){
+	  ss.children[t].setAttribute('onclick', null);
+	  ss.children[t].setAttribute('onmouseover', null);
+	  ss.children[t].setAttribute('onmouseout', null);
+	  ss.children[t].setAttribute('style', 'background:'+buttonOff+';');
+	}
+	if((typeof cards[0][bottomPos] === "undefined") && (ss.children[t].id.substring(0,9) == "imgBottom")){
+	  ss.children[t].setAttribute('onclick', null);
+	  ss.children[t].setAttribute('onmouseover', null);
+	  ss.children[t].setAttribute('onmouseout', null);
+	  ss.children[t].setAttribute('style', 'background:'+buttonOff+';');
+	}
+	if((typeof cards[0][other1pos] === "undefined") && (ss.children[t].id.substring(0,9) == "imgOther1")){
+	  ss.children[t].setAttribute('onclick', null);
+	  ss.children[t].setAttribute('onmouseover', null);
+	  ss.children[t].setAttribute('onmouseout', null);
+	  ss.children[t].setAttribute('style', 'background:'+buttonOff+';');
+	}
+	if((typeof cards[0][other2pos] === "undefined") && (ss.children[t].id.substring(0,9) == "imgOther2")){
+	  ss.children[t].setAttribute('onclick', null);
+	  ss.children[t].setAttribute('onmouseover', null);
+	  ss.children[t].setAttribute('onmouseout', null);
+	  ss.children[t].setAttribute('style', 'background:'+buttonOff+';');
+	}
+	if((typeof cards[0][other3pos] === "undefined") && (ss.children[t].id.substring(0,9) == "imgOther3")){
+	  ss.children[t].setAttribute('onclick', null);
+	  ss.children[t].setAttribute('onmouseover', null);
+	  ss.children[t].setAttribute('onmouseout', null);
+	  ss.children[t].setAttribute('style', 'background:'+buttonOff+';');
+	}
+    }
+  }
+  document.getElementById('imgFrontImg_0').setAttribute('src',imgDir + cards[0][frontPos]);
+}
+
+//]]>
+</script>
+</body>
+</html>
+
