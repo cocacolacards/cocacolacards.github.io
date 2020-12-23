@@ -3,10 +3,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <head>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css"/>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.min.css"/>
 <title>Coke Cards</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="cardList.js" ></script>
 </head>
 
@@ -147,7 +147,7 @@
     background-color: #fffaff;
     border-radius: 8px;
 }
-    
+
 .imgTopC {
     width:1.25em; 
     height:0.50em; 
@@ -251,6 +251,7 @@
 <body>
 <div style="float:left; width:100%; height:100%;">
    <div id="sml" style="float:left; width:100%; height:100%;">
+
      <div id="oneDeck" class="oneDeckC">
 	<div id="imgTop" class="imgTopC" onclick="doOnclick(this);" onmouseover="thumbHover(this);" onmouseout="thumbUnHover(this);">
         </div>
@@ -296,17 +297,19 @@
 
 <script language="javascript" type="text/javascript">
 //<![CDATA[
-var datePos = 0;
-var descPos = 1;
-var frontPos = 2;
-var backPos = 3;
-var leftPos = 4;
-var rightPos = 5;
-var topPos = 6;
-var bottomPos = 7;
-var other1pos = 8;
-var other2pos = 9;
-var other3pos = 10;
+var useCpos=1;
+var cPos = 0;
+var datePos = 1;
+var descPos = 2;
+var frontPos = 3;
+var backPos = 4;
+var leftPos = 5;
+var rightPos = 6;
+var topPos = 7;
+var bottomPos = 8;
+var other1pos = 9;
+var other2pos = 10;
+var other3pos = 11;
 var rowCnt = 0;
 var imgDir = '';
 var modal = document.getElementById("lrg");
@@ -451,7 +454,12 @@ function doit(){
       if(cln.children[k].id == "imgDesc"){
          cln.children[k].innerHTML= cards[a][datePos];
 	 var t = cards[a][frontPos];
-         cln.children[k].title= t.substring(0,t.indexOf('_',5));
+	 if(useCpos>0){
+           cln.children[k].title= t.substring(0,t.indexOf('_',5))+' '+cards[a][cPos];
+         }
+	 else{
+           cln.children[k].title= t.substring(0,t.indexOf('_',5));
+         }
       }
       cln.children[k].setAttribute('id',cln.children[k].id + '_' +i.toString());
       var kk = cln.children[k];
